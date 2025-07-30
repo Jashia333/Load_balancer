@@ -1,93 +1,58 @@
-# Load_balancer
-🔁 Python Load Balancer (Mini Project)
-This project implements a simple round-robin load balancer in Python on port 9000, which distributes traffic across three HTTP backend servers running on ports 9001, 9002, and 9003.
+# 🔁 Python Load Balancer (Mini Project)
 
-Each backend serves its own unique index.html file with distinct server identification and background color.
+This project demonstrates a simple **round-robin load balancer** written in Python. The load balancer listens on **port 9000** and distributes incoming HTTP requests across **three backend servers** running on ports **9001**, **9002**, and **9003**.
 
-📁 Project Structure
-pgsql
-Copy
-Edit
-Load_balancer/
-│
-├── load_balancer.py          # Load balancer listening on port 9000
-├── server.py                 # Simple HTTP server for backend nodes
-├── sites/
-│   ├── server_1/
-│   │   └── index.html        # Blue background – Server 1
-│   ├── server_2/
-│   │   └── index.html        # Green background – Server 2
-│   └── server_3/
-│       └── index.html        # Coral background – Server 3
-└── README.md                 # Project documentation
-🚀 How to Run
-1. Start Backend Servers
-Open three separate terminals and run the following:
+Each backend server serves a unique `index.html` page with a different background color and server name, making it easy to visualize load balancing in action.
 
-bash
-Copy
-Edit
-python server.py 9001 sites/server_1
-python server.py 9002 sites/server_2
-python server.py 9003 sites/server_3
-Each will serve its own index.html page.
+---
 
-2. Start the Load Balancer
-In a new terminal:
+## 📁 Project Structure
 
-bash
-Copy
-Edit
-python load_balancer.py
-This starts the load balancer on port 9000.
+- `load_balancer.py`: Implements the round-robin load balancer.
+- `server.py`: Launches a basic HTTP server serving files from a specified directory.
+- `sites/server_1`, `sites/server_2`, `sites/server_3`: Contain individual HTML files for each server.
 
-🌐 Test It
-Open your browser and go to:
+---
 
-arduino
-Copy
-Edit
-http://localhost:9000/
-Each refresh will cycle between the three backend servers:
+## 🚀 How to Run
 
-Server 1 (light blue)
+1. **Start the Backend Servers**  
+   Open three terminals and run each server on ports `9001`, `9002`, and `9003` using `server.py`.
 
-Server 2 (light green)
+2. **Start the Load Balancer**  
+   In a separate terminal, run `load_balancer.py`. This starts the balancer on `http://localhost:9000`.
 
-Server 3 (light coral)
+3. **Test the Setup**  
+   Open your browser and visit `http://localhost:9000`. Refreshing the page will cycle through the three backend servers.
 
-🛠 Technologies Used
-Python Standard Library
+---
 
-http.server and socketserver for backend HTTP servers
+## 🛠 Technologies Used
 
-http.client and BaseHTTPRequestHandler for load balancer
+- Python Standard Library
+  - `http.server`
+  - `socketserver`
+  - `http.client`
+  - `itertools`
 
-Round-robin logic using itertools.cycle
+No external libraries or frameworks are required.
 
-📚 Learning Goals
-This mini project is designed to demonstrate:
+---
 
-Basic concepts of load balancing
+## 📌 Future Enhancements
 
-HTTP protocol flow in Python
+- Health checks for backend servers
+- Logging and performance tracking
+- Support for POST and other HTTP methods
+- Docker containerization for easier deployment
 
-Using multiple backend servers
+---
 
-Simple round-robin request forwarding
+## 👤 Author
 
-📌 Future Improvements
-Health checks for backends
+**Name**: Jashia333  
+**GitHub**: [https://github.com/Jashia333](https://github.com/Jashia333)
 
-Threaded or asynchronous request handling
+---
 
-Logging and analytics
-
-Support for POST requests
-
-Dockerized setup
-
-👤 Author
-Name: Jashia333
-
-GitHub: github.com/Jashia333
+Feel free to fork this repo, suggest improvements, or use it as a starting point for more advanced networking and load balancing projects.
