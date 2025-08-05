@@ -4,6 +4,7 @@ import sys
 import os
 
 def run_server(port, directory):
+
     os.chdir(directory)
     handler = http.server.SimpleHTTPRequestHandler
     with socketserver.TCPServer(("", port), handler) as httpd:

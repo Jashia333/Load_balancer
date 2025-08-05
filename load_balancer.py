@@ -13,11 +13,15 @@ class LoadBalancerHandler(BaseHTTPRequestHandler):
 
         try:
             conn = http.client.HTTPConnection(backend_host, backend_port)
+            print("-----",self.path)
             conn.request("GET", self.path)
             resp = conn.getresponse()
-
             self.send_response(resp.status)
+
+            print(f"resp ={resp} \n resp_status {resp.status} \n resp headers {resp.getheaders}")
+            print("-------------------------------------------------")
             for header, value in resp.getheaders():
+                print(f"header {header} values {value}")
                 self.send_header(header, value)
             self.end_headers()
             self.wfile.write(resp.read())
